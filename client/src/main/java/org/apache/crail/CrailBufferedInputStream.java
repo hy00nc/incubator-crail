@@ -70,6 +70,9 @@ public abstract class CrailBufferedInputStream extends InputStream {
 		
 		for (int currentSize = 0; currentSize < allocationSize; currentSize += CrailConstants.BUFFER_SIZE){
 			CrailBuffer buffer = fs.allocateBuffer();
+			LOG.info("HY: Buffer remaining: {}", buffer.remaining());
+			LOG.info("HY: Buffer position: {}", buffer.position());
+			LOG.info("HY: Buffer limit {}", buffer.limit());
 			originalBuffers.add(buffer);
 		}
 		for (CrailBuffer buffer : originalBuffers){
@@ -413,7 +416,6 @@ public abstract class CrailBufferedInputStream extends InputStream {
 	private CrailBuffer getSlice(boolean blocking) throws Exception {
 		CrailBuffer slice = readySlices.peek();
 		if (slice == null){
-			LOG.info("HY: readySlices null.");
 			Future<CrailResult> future = pendingFutures.peek();
 			if (future == null){
 				tmpSlices.clear();
@@ -443,8 +445,7 @@ public abstract class CrailBufferedInputStream extends InputStream {
 				slice = null;
 			}
 		}
-		LOG.info("HY: readySlices returned");
-		return slice;		
+		return slice;
 	}
 
 	private void syncSlice() throws Exception {
