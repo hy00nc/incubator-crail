@@ -413,6 +413,7 @@ public abstract class CrailBufferedInputStream extends InputStream {
 	private CrailBuffer getSlice(boolean blocking) throws Exception {
 		CrailBuffer slice = readySlices.peek();
 		if (slice == null){
+			LOG.info("HY: readySlices null.");
 			Future<CrailResult> future = pendingFutures.peek();
 			if (future == null){
 				tmpSlices.clear();
@@ -441,7 +442,8 @@ public abstract class CrailBufferedInputStream extends InputStream {
 			} else {
 				slice = null;
 			}
-		} 
+		}
+		LOG.info("HY: readySlices returned");
 		return slice;		
 	}
 
