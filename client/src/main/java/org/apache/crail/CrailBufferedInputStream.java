@@ -139,7 +139,6 @@ public abstract class CrailBufferedInputStream extends InputStream {
 				LOG.info("HY: slice Buffer position {}", slice.position());
 				LOG.info("HY: slice Buffer limit {}", slice.limit());
 				int bufferRemaining = Math.min(len, slice.remaining());
-				slice.position(0);
 				slice.get(buf, off, bufferRemaining);
 				len -= bufferRemaining;
 				off += bufferRemaining;
