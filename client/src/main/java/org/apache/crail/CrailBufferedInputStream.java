@@ -125,11 +125,16 @@ public abstract class CrailBufferedInputStream extends InputStream {
 			}
 
 			int sumLen = 0;
+			boolean first = true;
 			while (len > 0) {
 				CrailBuffer slice = getSlice(true);
 				if (slice == null){
 					break;
 				}
+				if(first){
+				    slice.position(0);
+				    first=false;
+                }
 				LOG.info("HY: slice Buffer remaining {}", slice.remaining());
 				LOG.info("HY: slice Buffer position {}", slice.position());
 				LOG.info("HY: slice Buffer limit {}", slice.limit());
