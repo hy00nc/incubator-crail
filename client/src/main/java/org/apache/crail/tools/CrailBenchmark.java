@@ -345,11 +345,11 @@ public class CrailBenchmark {
 				double _offset = range*random.nextDouble();
 				//long offset = (long) _offset*size;
 				long offset = 4;
-				byte[] dst = new byte[122];
 				bufferedStream.seek(offset);
+				double ret = 0;
 				//double ret = (double) bufferedStream.read(buf.getByteBuffer());
-				double ret = (double) bufferedStream.read(dst);
-				System.out.println("Data read by the inputstream: "+ dst);
+				int result = bufferedStream.readInt();
+				System.out.println("Data read by the inputstream: {}"+ result);
 				if (ret > 0) {
 					sumbytes = sumbytes + ret;
 					ops = ops + 1.0;
