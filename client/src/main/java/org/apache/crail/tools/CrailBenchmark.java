@@ -344,8 +344,8 @@ public class CrailBenchmark {
 				buf.clear();
 				double _offset = range*random.nextDouble();
 				//long offset = (long) _offset*size;
-				long offset = 10;
-				byte[] dst = new byte[20];
+				long offset = 4;
+				byte[] dst = new byte[122];
 				bufferedStream.seek(offset);
 				//double ret = (double) bufferedStream.read(buf.getByteBuffer());
 				double ret = (double) bufferedStream.read(dst);
