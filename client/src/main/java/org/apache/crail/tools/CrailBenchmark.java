@@ -309,6 +309,7 @@ public class CrailBenchmark {
 		System.out.println("readRandom, filename " + filename  + ", size " + size + ", loop " + loop + ", buffered " + buffered);
 
 		CrailBuffer buf = null;
+		/*
 		if (size == CrailConstants.BUFFER_SIZE){
 			buf = fs.allocateBuffer();
 		} else if (size < CrailConstants.BUFFER_SIZE){
@@ -318,12 +319,14 @@ public class CrailBenchmark {
 		} else {
 			buf = OffHeapBuffer.wrap(ByteBuffer.allocateDirect(size));
 		}
-		
-		//warmup
-		ConcurrentLinkedQueue<CrailBuffer> bufferQueue = new ConcurrentLinkedQueue<CrailBuffer>();
-		bufferQueue.add(buf);
-		warmUp(filename, warmup, bufferQueue);		
-		
+		*/
+
+//		//warmup
+//		ConcurrentLinkedQueue<CrailBuffer> bufferQueue = new ConcurrentLinkedQueue<CrailBuffer>();
+//		bufferQueue.add(buf);
+//		warmUp(filename, warmup, bufferQueue);
+
+
 		//benchmark
 		System.out.println("starting benchmark...");
 		fs.getStatistics().reset();
@@ -341,7 +344,7 @@ public class CrailBenchmark {
 		long start = System.currentTimeMillis();
 		while (ops < loop) {
 			if (buffered){
-				buf.clear();
+		//		buf.clear();
 				//double _offset = range*random.nextDouble();
 				//long offset = (long) _offset*size;
 				long offset = (long) ops;
