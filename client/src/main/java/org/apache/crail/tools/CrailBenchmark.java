@@ -336,9 +336,9 @@ public class CrailBenchmark {
 		
 		double sumbytes = 0;
 		double ops = 0;
-        long _range = file.getCapacity() - ((long)buf.capacity());
-        _range = _range / size;
-        double range = (double) _range;
+//        long _range = file.getCapacity() - ((long)buf.capacity());
+//        _range = _range / size;
+//        double range = (double) _range;
 		Random random = new Random();
 		
 		long start = System.currentTimeMillis();
@@ -363,9 +363,9 @@ public class CrailBenchmark {
 
 			} else {
 				buf.clear();
-				double _offset = range*random.nextDouble();
-				long offset = (long) _offset*size;
-				directStream.seek(offset);
+//				double _offset = range*random.nextDouble();
+//				long offset = (long) _offset*size;
+//				directStream.seek(offset);
 				double ret = (double) directStream.read(buf).get().getLen();
 				if (ret > 0) {
 					sumbytes = sumbytes + ret;
